@@ -1,0 +1,15 @@
+{
+  "source": "StudySmart-main.zip",
+  "capabilities": [
+    {"capability":"code and six screens","source":"React/Vite archive","outcome":"adapt to existing TanStack runtime, preserve source UI","status":"in_progress","next_action":"import and verify all screens"},
+    {"capability":"schema and database records","source":"source call-site inspection","outcome":"not applicable: no database used","status":"not_applicable","next_action":null},
+    {"capability":"auth identities and authorization","source":"source call-site inspection","outcome":"not applicable: no sign-in or roles in source","status":"not_applicable","next_action":null},
+    {"capability":"browser saved data and uploaded images","source":"localStorage and FileReader","outcome":"preserve original browser-only storage; old-origin browser data not bundled","status":"in_progress","next_action":"verify create/read/update/delete and reload"},
+    {"capability":"AI provider and secrets","source":"OpenAI-compatible user-configured connector","outcome":"preserve existing connector and simulated fallback; no credentials supplied","status":"pending_verification","next_action":"live provider verification requires configured provider credentials"},
+    {"capability":"slide graphics","source":"Picsum fallback image URLs","outcome":"preserve existing generated-document graphics","status":"in_progress","next_action":"verify generated slides"},
+    {"capability":"PDF HTML text JSON exports","source":"html2canvas and jsPDF","outcome":"preserve all export formats","status":"in_progress","next_action":"verify document downloads"},
+    {"capability":"microphone transcription","source":"browser SpeechRecognition","outcome":"preserve browser support and microphone permissions","status":"pending_verification","next_action":"real microphone speech needs user/browser permission"},
+    {"capability":"endpoints callbacks webhooks schedules external callers cutover","source":"source inspection","outcome":"none detected; GitHub deploy workflow replaced by Lovable hosting","status":"not_applicable","next_action":null},
+    {"capability":"timer themes syllabus parser","source":"source helpers","outcome":"preserve existing behavior","status":"in_progress","next_action":"verify timer, theme and parser"}
+  ]
+}

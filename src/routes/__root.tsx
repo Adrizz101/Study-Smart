@@ -6,12 +6,15 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  ClientOnly,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AppProvider } from '@/store';
+import { StudyLayout } from '@/components/StudyLayout';
 
 function NotFoundComponent() {
   return (
@@ -89,7 +92,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:wght@600;700&display=swap" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
@@ -118,8 +120,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ClientOnly fallback={<div className="flex min-h-screen items-center justify-center bg-bg text-text">StudySmart</div>}>
+        <AppProvider>
+          <StudyLayout><Outlet /></StudyLayout>
+        </AppProvider>
+      </ClientOnly>
     </QueryClientProvider>
   );
 }
