@@ -61,7 +61,7 @@ export default function Schedule() {
     const map: Record<string, ScheduleEvent[]> = {};
     events.forEach((e) => {
       if (!map[e.date]) map[e.date] = [];
-      map[e.date].push(e);
+      map[e.date]?.push(e);
     });
     Object.values(map).forEach((arr) => arr.sort((a, b) => a.startTime.localeCompare(b.startTime)));
     return map;
@@ -343,7 +343,7 @@ function CourseModal({ open, onClose, editing, onSave }: {
 }) {
   const [name, setName] = useState(editing?.name || '');
   const [code, setCode] = useState(editing?.code || '');
-  const [color, setColor] = useState(editing?.color || COURSE_COLORS[0]);
+  const [color, setColor] = useState(editing?.color || COURSE_COLORS[0] || '#10b981');
   const [progress, setProgress] = useState(editing?.progress || 0);
   const [active, setActive] = useState(editing?.active ?? true);
   const [examDate, setExamDate] = useState(editing?.examDate || '');

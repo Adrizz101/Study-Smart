@@ -16,7 +16,7 @@ export interface Course {
   color: string;
   active: boolean;
   progress: number;
-  examDate?: string;
+  examDate?: string | undefined;
 }
 
 export interface ScheduleEvent {
@@ -27,7 +27,7 @@ export interface ScheduleEvent {
   startTime: string;
   endTime: string;
   type: 'lecture' | 'exam' | 'assignment' | 'study' | 'other';
-  notes?: string;
+  notes?: string | undefined;
 }
 
 export interface ChatMessage {
@@ -35,7 +35,7 @@ export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: number;
-  image?: string;
+  image?: string | undefined;
 }
 
 export interface TutorSession {
@@ -60,11 +60,11 @@ export interface Slide {
   body: string;
   bullets: string[];
   layout: SlideLayout;
-  accent?: string;
-  image?: string;
-  category?: string;
-  stats?: SlideStat[];
-  palette?: SlidePalette;
+  accent?: string | undefined;
+  image?: string | undefined;
+  category?: string | undefined;
+  stats?: SlideStat[] | undefined;
+  palette?: SlidePalette | undefined;
 }
 
 export interface SlideDocument {

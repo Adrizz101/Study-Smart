@@ -35,12 +35,12 @@ export function generateSocraticResponse(ctx: SocraticContext, turn: number): st
 
   if (turn === 0) {
     const starter = SOCRATIC_STARTERS[Math.floor(Math.random() * SOCRATIC_STARTERS.length)];
-    return starter.replace('{topic}', topic);
+    return (starter ?? 'What do you already know about {topic}?').replace('{topic}', topic);
   }
 
   if (turn < 5) {
     const followup = FOLLOWUPS[Math.floor(Math.random() * FOLLOWUPS.length)];
-    return followup;
+    return followup ?? 'Can you explain your reasoning?';
   }
 
   const enc = ENCOURAGEMENT[Math.floor(Math.random() * ENCOURAGEMENT.length)];

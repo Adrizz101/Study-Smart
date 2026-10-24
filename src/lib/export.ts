@@ -53,7 +53,9 @@ export async function exportSlidesToPDF(slideElements: HTMLElement[], fileName: 
   const pageHeight = pdf.internal.pageSize.getHeight();
 
   for (let i = 0; i < slideElements.length; i++) {
-    const canvas = await capture(slideElements[i], {
+    const element = slideElements[i];
+    if (!element) continue;
+    const canvas = await capture(element, {
       scale: 2,
       useCORS: true,
       allowTaint: true,

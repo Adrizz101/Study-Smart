@@ -39,7 +39,7 @@ function parseTimes(text: string): { start: string; end: string } | null {
   let m: RegExpExecArray | null;
   TIME_REGEX.lastIndex = 0;
   while ((m = TIME_REGEX.exec(text)) !== null) {
-    let h = parseInt(m[1], 10);
+    let h = parseInt(m[1] ?? '0', 10);
     const min = m[2] ? parseInt(m[2], 10) : 0;
     const suffix = m[3]?.toLowerCase();
     let pm = false;
@@ -50,6 +50,7 @@ function parseTimes(text: string): { start: string; end: string } | null {
   }
   if (matches.length === 0) return null;
   const start = matches[0];
+  if (!start) return null;
   const end = matches[1] || { h: start.h + 1, m: start.m };
   const fmt = (t: { h: number; m: number }) =>
     `${String(t.h).padStart(2, '0')}:${String(t.m).padStart(2, '0')}`;
@@ -121,7 +122,7 @@ export function formatDateLabel(dateStr: string): string {
 }
 
 export function formatTimeLabel(time: string): string {
-  const [h, m] = time.split(':').map(Number);
+  const [h = 0, m = 0] = time.split(':').map(Number);
   const period = h >= 12 ? 'PM' : 'AM';
   const displayH = h === 0 ? 12 : h > 12 ? h - 12 : h;
   return `${displayH}:${String(m).padStart(2, '0')} ${period}`;

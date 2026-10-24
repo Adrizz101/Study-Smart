@@ -73,12 +73,12 @@ export default function Studio() {
           const parsed = JSON.parse(jsonMatch[0]);
           generatedSlides = (parsed.slides || []).map((s: Record<string, unknown>) => ({
             id: crypto.randomUUID(),
-            heading: String(s.heading || ''),
-            body: String(s.body || ''),
-            bullets: Array.isArray(s.bullets) ? s.bullets.map(String) : [],
-            layout: (s.layout as Slide['layout']) || 'content',
-            category: s.category ? String(s.category) : undefined,
-            stats: Array.isArray(s.stats) ? s.stats.map((st: Record<string, unknown>) => ({ id: crypto.randomUUID(), label: String(st.label || ''), value: String(st.value || '') })) : undefined,
+            heading: String(s['heading'] || ''),
+            body: String(s['body'] || ''),
+            bullets: Array.isArray(s['bullets']) ? s['bullets'].map(String) : [],
+            layout: (s['layout'] as Slide['layout']) || 'content',
+            category: s['category'] ? String(s['category']) : undefined,
+            stats: Array.isArray(s['stats']) ? s['stats'].map((st: Record<string, unknown>) => ({ id: crypto.randomUUID(), label: String(st['label'] || ''), value: String(st['value'] || '') })) : undefined,
           }));
         }
       } catch {
@@ -160,7 +160,7 @@ export default function Studio() {
     if (!slide) return;
     const layouts: Slide['layout'][] = ['title', 'content', 'split', 'stats', 'summary'];
     const currentIdx = layouts.indexOf(slide.layout);
-    const nextLayout = layouts[(currentIdx + 1) % layouts.length];
+    const nextLayout = layouts[(currentIdx + 1) % layouts.length] ?? 'content';
     updateSlide(slideId, { layout: nextLayout });
   }, [activeDoc, updateSlide]);
 
@@ -640,14 +640,14 @@ function GuideView({ doc }: { doc: SlideDocument }) {
           <div className="flex items-center gap-3 mb-3">
             <span className="w-8 h-8 rounded-lg bg-study-emerald-500/15 flex items-center justify-center text-sm font-bold text-study-emerald-400 shrink-0">{i + 1}</span>
             <div>
-              {s.category && <span className="text-xs font-semibold text-study-emerald-400 uppercase tracking-wide">{s.category}</span>}
-              <h2 className="text-xl font-semibold text-study-white">{s.heading}</h2>
+              {s['category'] && <span className="text-xs font-semibold text-study-emerald-400 uppercase tracking-wide">{s['category']}</span>}
+              <h2 className="text-xl font-semibold text-study-white">{s['heading']}</h2>
             </div>
           </div>
-          {s.body && <p className="text-sm text-study-slate-300 leading-relaxed mb-3">{s.body}</p>}
-          {s.bullets.length > 0 && (
+          {s['body'] && <p className="text-sm text-study-slate-300 leading-relaxed mb-3">{s['body']}</p>}
+          {s['bullets'].length > 0 && (
             <div className="space-y-1.5">
-              {s.bullets.map((b, j) => (
+              {s['bullets'].map((b, j) => (
                 <div key={j} className="flex items-start gap-2 text-sm text-study-slate-300">
                   <span className="text-study-emerald-400 mt-0.5">▸</span>
                   {b}
@@ -655,9 +655,9 @@ function GuideView({ doc }: { doc: SlideDocument }) {
               ))}
             </div>
           )}
-          {s.stats && s.stats.length > 0 && (
+          {s['stats'] && s['stats'].length > 0 && (
             <div className="grid grid-cols-3 gap-3 mt-4">
-              {s.stats.map((st) => (
+              {s['stats'].map((st) => (
                 <div key={st.id} className="rounded-lg p-3" style={{ background: 'var(--source-32)', backdropFilter: 'blur(8px)' }}>
                   <div className="text-lg font-bold text-study-emerald-400">{st.value}</div>
                   <div className="text-xs text-study-slate-400 mt-0.5">{st.label}</div>
@@ -853,7 +853,7 @@ function generateSimulatedSlides(prompt: string, isSlides: boolean, count: numbe
   ];
 
   if (!isSlides) {
-    slides.forEach((s) => { if (s.layout === 'title') s.layout = 'content'; });
+    slides.forEach((s) => { if (s['layout'] === 'title') s['layout'] = 'content'; });
   }
 
   return slides.slice(0, Math.max(count + 1, 4));
