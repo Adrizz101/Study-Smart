@@ -10,15 +10,29 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExamsRouteImport } from './routes/exams'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as StudioRouteImport } from './routes/studio'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TranscriberRouteImport } from './routes/transcriber'
 import { Route as TutorRouteImport } from './routes/tutor'
+import { Route as ApiGenerateImageRouteImport } from './routes/api/generate-image'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamsRoute = ExamsRouteImport.update({
+  id: '/exams',
+  path: '/exams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScheduleRoute = ScheduleRouteImport.update({
@@ -36,6 +50,11 @@ const StudioRoute = StudioRouteImport.update({
   path: '/studio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TranscriberRoute = TranscriberRouteImport.update({
   id: '/transcriber',
   path: '/transcriber',
@@ -46,55 +65,99 @@ const TutorRoute = TutorRouteImport.update({
   path: '/tutor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiGenerateImageRoute = ApiGenerateImageRouteImport.update({
+  id: '/api/generate-image',
+  path: '/api/generate-image',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/exams': typeof ExamsRoute
+  '/privacy': typeof PrivacyRoute
   '/schedule': typeof ScheduleRoute
   '/settings': typeof SettingsRoute
   '/studio': typeof StudioRoute
+  '/terms': typeof TermsRoute
   '/transcriber': typeof TranscriberRoute
   '/tutor': typeof TutorRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/exams': typeof ExamsRoute
+  '/privacy': typeof PrivacyRoute
   '/schedule': typeof ScheduleRoute
   '/settings': typeof SettingsRoute
   '/studio': typeof StudioRoute
+  '/terms': typeof TermsRoute
   '/transcriber': typeof TranscriberRoute
   '/tutor': typeof TutorRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/exams': typeof ExamsRoute
+  '/privacy': typeof PrivacyRoute
   '/schedule': typeof ScheduleRoute
   '/settings': typeof SettingsRoute
   '/studio': typeof StudioRoute
+  '/terms': typeof TermsRoute
   '/transcriber': typeof TranscriberRoute
   '/tutor': typeof TutorRoute
+  '/api/generate-image': typeof ApiGenerateImageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/schedule' | '/settings' | '/studio' | '/transcriber' | '/tutor'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/schedule' | '/settings' | '/studio' | '/transcriber' | '/tutor'
-  id:
-    | '__root__'
     | '/'
+    | '/exams'
+    | '/privacy'
     | '/schedule'
     | '/settings'
     | '/studio'
+    | '/terms'
     | '/transcriber'
     | '/tutor'
+    | '/api/generate-image'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/exams'
+    | '/privacy'
+    | '/schedule'
+    | '/settings'
+    | '/studio'
+    | '/terms'
+    | '/transcriber'
+    | '/tutor'
+    | '/api/generate-image'
+  id:
+    | '__root__'
+    | '/'
+    | '/exams'
+    | '/privacy'
+    | '/schedule'
+    | '/settings'
+    | '/studio'
+    | '/terms'
+    | '/transcriber'
+    | '/tutor'
+    | '/api/generate-image'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExamsRoute: typeof ExamsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ScheduleRoute: typeof ScheduleRoute
   SettingsRoute: typeof SettingsRoute
   StudioRoute: typeof StudioRoute
+  TermsRoute: typeof TermsRoute
   TranscriberRoute: typeof TranscriberRoute
   TutorRoute: typeof TutorRoute
+  ApiGenerateImageRoute: typeof ApiGenerateImageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -104,6 +167,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exams': {
+      id: '/exams'
+      path: '/exams'
+      fullPath: '/exams'
+      preLoaderRoute: typeof ExamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/schedule': {
@@ -127,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/transcriber': {
       id: '/transcriber'
       path: '/transcriber'
@@ -141,16 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TutorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/generate-image': {
+      id: '/api/generate-image'
+      path: '/api/generate-image'
+      fullPath: '/api/generate-image'
+      preLoaderRoute: typeof ApiGenerateImageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExamsRoute: ExamsRoute,
+  PrivacyRoute: PrivacyRoute,
   ScheduleRoute: ScheduleRoute,
   SettingsRoute: SettingsRoute,
   StudioRoute: StudioRoute,
+  TermsRoute: TermsRoute,
   TranscriberRoute: TranscriberRoute,
   TutorRoute: TutorRoute,
+  ApiGenerateImageRoute: ApiGenerateImageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
