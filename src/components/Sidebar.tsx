@@ -1,14 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { ViewKey } from '@/types';
-import { LayoutDashboard, Calendar, Bot, FileText, Mic, Settings, BookOpen, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Calendar, Bot, FileText, Mic, Settings, BookOpen, Menu, X, PenTool, ClipboardCheck } from 'lucide-react';
 import { useApp } from '@/store';
 import { PomodoroTimer } from '@/components/PomodoroTimer';
 
 const NAV_ITEMS: { key: ViewKey; label: string; icon: typeof LayoutDashboard }[] = [
   { key: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { key: 'schedule', label: 'Smart Schedule', icon: Calendar },
-  { key: 'tutor', label: 'AI Tutor', icon: Bot },
-  { key: 'studio', label: 'Document & Slide Studio', icon: FileText },
+  { key: 'tutor', label: 'AI Whiteboard', icon: PenTool },
+  { key: 'studio', label: 'Presentation Studio', icon: FileText },
+  { key: 'exams', label: 'PYQ Exam Arena', icon: ClipboardCheck },
   { key: 'transcriber', label: 'Lecture Transcriber', icon: Mic },
   { key: 'settings', label: 'Settings', icon: Settings },
 ];

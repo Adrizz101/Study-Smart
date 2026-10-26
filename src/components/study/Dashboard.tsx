@@ -28,7 +28,7 @@ export default function Dashboard({ onNavigate }: DashboardProps) {
 
   const quickActions: { label: string; desc: string; icon: typeof Calendar; view: ViewKey; color: string }[] = [
     { label: 'Plan Schedule', desc: 'Add events or parse a syllabus', icon: Calendar, view: 'schedule', color: 'from-study-emerald-500 to-study-teal-600' },
-    { label: 'Ask AI Tutor', desc: 'Socratic guidance for any subject', icon: Bot, view: 'tutor', color: 'from-study-blue-500 to-study-indigo-600' },
+    { label: 'AI Whiteboard', desc: 'Draw, upload and get visual explanations', icon: Bot, view: 'tutor', color: 'from-study-blue-500 to-study-indigo-600' },
     { label: 'Build Document', desc: 'Generate slides & study guides', icon: FileText, view: 'studio', color: 'from-study-amber-500 to-study-orange-600' },
     { label: 'Transcribe Lecture', desc: 'Live speech-to-text capture', icon: Mic, view: 'transcriber', color: 'from-study-rose-500 to-study-pink-600' },
   ];

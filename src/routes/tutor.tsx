@@ -1,16 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router';
-import Tutor from '@/components/study/Tutor';
+import Whiteboard from '@/components/learning/Whiteboard';
 export const Route = createFileRoute('/tutor')({
   head: () => ({ meta: [
-    { title: 'StudySmart — AI Tutor' },
-    { name: 'description', content: 'Study with your Socratic tutor and saved conversations.' },
-    { property: 'og:title', content: 'StudySmart — AI Tutor' },
-    { property: 'og:description', content: 'Study with your Socratic tutor and saved conversations.' },
+    { title: 'StudySmart — AI Visual Whiteboard' },
+    { name: 'description', content: 'Draw, upload reports and get live visual AI explanations.' },
+    { property: 'og:title', content: 'StudySmart — AI Visual Whiteboard' },
+    { property: 'og:description', content: 'Draw, upload reports and get live visual AI explanations.' },
     { property: 'og:type', content: 'website' },
     { name: 'twitter:card', content: 'summary_large_image' },
   ] }),
   component: Page,
 });
 function Page() {
-  return <Tutor />;
+  return <Whiteboard />;
 }

@@ -6,6 +6,7 @@ export type ViewKey =
   | 'schedule'
   | 'tutor'
   | 'studio'
+  | 'exams'
   | 'transcriber'
   | 'settings';
 
