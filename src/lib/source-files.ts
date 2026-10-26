@@ -22,7 +22,7 @@ export async function readSource(file: File): Promise<SourceInput> {
         await page.render({ canvas, viewport }).promise;
         images.push(canvas.toDataURL('image/jpeg', .75));
       }
-    } finally { await pdf.destroy(); }
+    } finally { await pdf.cleanup(); }
     return { name: file.name, text: texts.join('\n\n'), images };
   }
   if (/\.(txt|md|csv)$/i.test(file.name)) return { name: file.name, text: await file.text(), images: [] };
