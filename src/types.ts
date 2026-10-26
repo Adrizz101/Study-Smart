@@ -48,7 +48,7 @@ export interface TutorSession {
 
 export type SlideLayout = 'title' | 'bento' | 'timeline' | 'comparison' | 'process' | 'spotlight' | 'dossier' | 'stats' | 'content' | 'split' | 'summary';
 export interface SlideCard { title: string; text: string; value: string }
-export type DeckTheme = 'editorial' | 'obsidian' | 'parchment' | 'midnight' | 'emerald';
+export type DeckTheme = 'editorial' | 'noir' | 'botanical';
 export type SlidePalette = 'emerald-dark' | 'indigo-dark' | 'bronze-dark' | 'slate-dark' | 'rose-dark' | 'teal-dark';
 
 export interface SlideStat {
