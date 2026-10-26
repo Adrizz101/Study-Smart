@@ -1,11 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
-import Studio from '@/components/study/Studio';
+import Studio from '@/components/learning/PresentationStudio';
 export const Route = createFileRoute('/studio')({
   head: () => ({ meta: [
-    { title: 'StudySmart — Document & Slide Studio' },
-    { name: 'description', content: 'Create, edit, present and export study slides and guides.' },
-    { property: 'og:title', content: 'StudySmart — Document & Slide Studio' },
-    { property: 'og:description', content: 'Create, edit, present and export study slides and guides.' },
+    { title: 'StudySmart — Presentation Studio' },
+    { name: 'description', content: 'Generate, AI-edit, present and export polished presentations.' },
+    { property: 'og:title', content: 'StudySmart — Presentation Studio' },
+    { property: 'og:description', content: 'Generate, AI-edit, present and export polished presentations.' },
     { property: 'og:type', content: 'website' },
     { name: 'twitter:card', content: 'summary_large_image' },
   ] }),

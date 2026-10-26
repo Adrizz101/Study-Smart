@@ -1,14 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { ViewKey } from '@/types';
-import { LayoutDashboard, Calendar, Bot, FileText, Mic, Settings, BookOpen, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Calendar, Bot, FileText, Mic, Settings, BookOpen, Menu, X, PenTool, ClipboardCheck } from 'lucide-react';
 import { useApp } from '@/store';
 import { PomodoroTimer } from '@/components/PomodoroTimer';
 
 const NAV_ITEMS: { key: ViewKey; label: string; icon: typeof LayoutDashboard }[] = [
   { key: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { key: 'schedule', label: 'Smart Schedule', icon: Calendar },
-  { key: 'tutor', label: 'AI Tutor', icon: Bot },
-  { key: 'studio', label: 'Document & Slide Studio', icon: FileText },
+  { key: 'tutor', label: 'AI Whiteboard', icon: PenTool },
+  { key: 'studio', label: 'Presentation Studio', icon: FileText },
+  { key: 'exams', label: 'PYQ Exam Arena', icon: ClipboardCheck },
   { key: 'transcriber', label: 'Lecture Transcriber', icon: Mic },
   { key: 'settings', label: 'Settings', icon: Settings },
 ];
@@ -63,8 +64,9 @@ export function Sidebar({ current, onNavigate, mobileOpen, onCloseMobile }: Side
           </span>
         </div>
         <div className="text-[10px] text-text-dim px-3 leading-relaxed">
-          Socratic study companion. Not a substitute for your own work.
+          AI study companion. Not a substitute for your own work.
         </div>
+        <div className="flex gap-3 px-3 text-[11px] text-text-muted"><a href="/privacy" className="underline">Privacy</a><a href="/terms" className="underline">Terms</a></div>
       </div>
     </div>
   );

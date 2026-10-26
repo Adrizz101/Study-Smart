@@ -6,6 +6,7 @@ export type ViewKey =
   | 'schedule'
   | 'tutor'
   | 'studio'
+  | 'exams'
   | 'transcriber'
   | 'settings';
 
@@ -45,7 +46,9 @@ export interface TutorSession {
   createdAt: number;
 }
 
-export type SlideLayout = 'title' | 'content' | 'split' | 'summary' | 'stats';
+export type SlideLayout = 'title' | 'bento' | 'timeline' | 'comparison' | 'process' | 'spotlight' | 'dossier' | 'stats' | 'content' | 'split' | 'summary';
+export interface SlideCard { title: string; text: string; value: string }
+export type DeckTheme = 'editorial' | 'noir' | 'botanical';
 export type SlidePalette = 'emerald-dark' | 'indigo-dark' | 'bronze-dark' | 'slate-dark' | 'rose-dark' | 'teal-dark';
 
 export interface SlideStat {
@@ -65,6 +68,10 @@ export interface Slide {
   category?: string | undefined;
   stats?: SlideStat[] | undefined;
   palette?: SlidePalette | undefined;
+  cards?: SlideCard[] | undefined;
+  citations?: string[] | undefined;
+  imagePrompt?: string | undefined;
+  imageAlt?: string | undefined;
 }
 
 export interface SlideDocument {
@@ -74,6 +81,9 @@ export interface SlideDocument {
   slides: Slide[];
   updatedAt: number;
   format: 'slides' | 'guide';
+  student?: string | undefined;
+  theme?: DeckTheme | undefined;
+  sources?: { name: string; text: string; images: string[] }[] | undefined;
 }
 
 export interface Transcription {

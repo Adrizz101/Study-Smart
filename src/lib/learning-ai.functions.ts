@@ -10,7 +10,7 @@ export const generateDeck = createServerFn({ method: 'POST' }).middleware([requi
   .handler(async ({ data }) => {
     const count = validateSlideCount(data.count);
     const { structuredAI } = await import('./learning-ai.server');
-    const slides = [];
+    const slides: z.infer<typeof deckSchema>['slides'] = [];
     let title = '', subject = '', runId: string | undefined;
     // Small batches preserve the student's exact count without imposing a fixed deck limit.
     for (let start = 0; start < count; start += 6) {
