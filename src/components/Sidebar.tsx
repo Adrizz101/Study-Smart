@@ -66,6 +66,7 @@ export function Sidebar({ current, onNavigate, mobileOpen, onCloseMobile }: Side
         <div className="text-[10px] text-text-dim px-3 leading-relaxed">
           AI study companion. Not a substitute for your own work.
         </div>
+        <div className="flex gap-3 px-3 text-[11px] text-text-muted"><a href="/privacy" className="underline">Privacy</a><a href="/terms" className="underline">Terms</a></div>
       </div>
     </div>
   );
