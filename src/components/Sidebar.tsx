@@ -64,7 +64,7 @@ export function Sidebar({ current, onNavigate, mobileOpen, onCloseMobile }: Side
           </span>
         </div>
         <div className="text-[10px] text-text-dim px-3 leading-relaxed">
-          Socratic study companion. Not a substitute for your own work.
+          AI study companion. Not a substitute for your own work.
         </div>
       </div>
     </div>
