@@ -28,7 +28,7 @@ export default function DrawingBoard() {
       const result=await explain({data:{prompt,board:JSON.stringify(selection.length?selection:elements),history:messages.slice(-6).map(m=>`${m.question}\n${m.answer}`).join('\n'),sources:[...sources,{name:'Student whiteboard',text:'Student drawing; inspect selected objects and image.',images:[image]}],consent:true}});
       const offset=selection.length?0:Math.max(0,...elements.map(e=>e.y+e.height))+60;
       const ink=getComputedStyle(document.documentElement).getPropertyValue('--board-tutor').trim();
-      const added=convertToExcalidrawElements(result.elements.map((e):any=>(e=>({type:e.type,x:e.x,y:e.y+offset,width:Math.max(1,Math.abs(e.width)),height:Math.max(1,Math.abs(e.height)),strokeColor:ink,...(e.type==='text'?{text:e.text,fontSize:22}:{}),...(e.type==='arrow'||e.type==='line'?{points:[[0,0],[e.width,e.height]] as [number,number][]}:{})}))));
+      const added=convertToExcalidrawElements(result.elements.map((e):any=>({type:e.type,x:e.x,y:e.y+offset,width:Math.max(1,Math.abs(e.width)),height:Math.max(1,Math.abs(e.height)),strokeColor:ink,...(e.type==='text'?{text:e.text,fontSize:22}:{}),...(e.type==='arrow'||e.type==='line'?{points:[[0,0],[e.width,e.height]] as [number,number][]}:{})})));
       const all=[...elements];
       for(const element of added) {
         all.push(element);api.updateScene({elements:[...all]});

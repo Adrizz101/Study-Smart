@@ -82,7 +82,7 @@ export interface SlideDocument {
   format: 'slides' | 'guide';
   student?: string | undefined;
   theme?: DeckTheme | undefined;
-  sources?: string[] | undefined;
+  sources?: { name: string; text: string; images: string[] }[] | undefined;
 }
 
 export interface Transcription {
