@@ -11,9 +11,7 @@ export function AIConsent({ consent, onConsent }: { consent: boolean; onConsent:
     setError('');
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: {
-        redirectTo: window.location.origin,
-      },
+      options: { redirectTo: window.location.origin },
     });
     if (error) setError(error.message);
     else setSignedIn(true);
@@ -22,14 +20,12 @@ export function AIConsent({ consent, onConsent }: { consent: boolean; onConsent:
   return <div className="ai-consent">
     <label className="flex items-start gap-2 text-xs text-text-muted">
       <input type="checkbox" checked={consent} onChange={e => onConsent(e.target.checked)} />
-      <span>I am at least 18, or have the required parent/guardian or school authorization. I agree to the <Link to="/terms" className="text-accent-400 underline">Terms</Link> and <Link to="/privacy" className="text-accent-400 underline">Privacy notice</Link>, and consent to sending selected content to AI. No sensitive student information.</span>
+      <span>I am at least 18... [Terms and Privacy text here]</span>
     </label>
     
-    {/* There is now ONLY ONE button. The Lovable button is physically gone. */}
     {!signedIn && <div className="mt-2 flex flex-wrap gap-2">
       <Button variant="outline" size="sm" onClick={signIn}>Continue with Google</Button>
     </div>}
-    
     {error && <p role="alert" className="text-study-rose-500 text-xs">{error}</p>}
   </div>;
 }
