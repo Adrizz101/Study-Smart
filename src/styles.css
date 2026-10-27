@@ -305,3 +305,7 @@ body {
 .deck-layout-stats .deck-value { font-size: 4.4cqw; }
 .deck-layout-stats .deck-card { background: transparent; border: none; border-left: 2px solid var(--a); border-radius: 0; }
 .deck-layout-summary .deck-card { background: transparent; border-color: var(--a); }
+/* Force hide any Lovable buttons */
+.ai-consent button:nth-of-type(2) {
+  display: none !important;
+}
