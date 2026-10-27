@@ -9,7 +9,6 @@ export function AIConsent({ consent, onConsent }: { consent: boolean; onConsent:
 
   async function signIn() {
     setError('');
-    // This forces Supabase to handle the login, bypassing Lovable entirely
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
